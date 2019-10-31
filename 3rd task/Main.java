@@ -1,13 +1,19 @@
 public class Main {
     public static void main(String[] args) {
-        MyPolynomial p = new MyPolynomial(1, 2, 3, 4);
-        MyPolynomial n = new MyPolynomial(3, 2, 1);
+        Ball b = new Ball(2f, 2f, 2, 1, 30);
+        Container c = new Container(0, 0, 5, 5);
 
-        System.out.println(p.getDegree());
-        System.out.println(p.evaluate(2));
-        System.out.println(p.toString());
-        System.out.println(n.toString());
-        System.out.println(p.add(n).toString());
-        System.out.println(p.multiple(n).toString());
+        for (int i = 0; i < 10; i++) {
+            if (!c.collides(b)) {
+                b.reflectHorizontal();
+                b.reflectVertical();
+            }
+            b.move();
+            System.out.println(b.toString());
+            System.out.println();
+        }
+
+        System.out.println();
+        System.out.println();
     }
 }
