@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class MyPoint {
     private int x = 0;
     private int y = 0;
@@ -50,5 +52,19 @@ public class MyPoint {
 
     public double distance() {
         return Math.sqrt(Math.pow((0 - this.x), 2) + Math.pow((0 - this.y), 2));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MyPoint)) return false;
+        MyPoint myPoint = (MyPoint) o;
+        return x == myPoint.x &&
+                y == myPoint.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 }

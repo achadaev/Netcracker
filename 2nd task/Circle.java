@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 import static java.lang.Math.PI;
 
 public class Circle {
@@ -38,5 +40,19 @@ public class Circle {
 
     public double getArea() {
         return (PI * (radius * radius));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Circle)) return false;
+        Circle circle = (Circle) o;
+        return Double.compare(circle.radius, radius) == 0 &&
+                color.equals(circle.color);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(radius, color);
     }
 }
