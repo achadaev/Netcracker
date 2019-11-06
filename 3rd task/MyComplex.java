@@ -103,4 +103,27 @@ public class MyComplex {
         MyComplex newComplex = new MyComplex(real, -imag);
         return newComplex;
     }
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (!(object instanceof MyComplex)) return false;
+        if (!super.equals(object)) return false;
+
+        MyComplex myComplex = (MyComplex) object;
+
+        if (Double.compare(myComplex.real, real) != 0) return false;
+        if (Double.compare(myComplex.imag, imag) != 0) return false;
+
+        return true;
+    }
+
+    public int hashCode() {
+        int result = super.hashCode();
+        long temp;
+        temp = Double.doubleToLongBits(real);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(imag);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
 }

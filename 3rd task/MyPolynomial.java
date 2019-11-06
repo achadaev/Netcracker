@@ -72,4 +72,22 @@ public class MyPolynomial {
             return newPolynomial;
         }
     }
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (!(object instanceof MyPolynomial)) return false;
+        if (!super.equals(object)) return false;
+
+        MyPolynomial that = (MyPolynomial) object;
+
+        if (!java.util.Arrays.equals(coeffs, that.coeffs)) return false;
+
+        return true;
+    }
+
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + Arrays.hashCode(coeffs);
+        return result;
+    }
 }
