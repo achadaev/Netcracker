@@ -1,3 +1,5 @@
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.Random;
 
 public class RandArray {
@@ -115,5 +117,22 @@ public class RandArray {
             }
             System.out.println();
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof RandArray)) return false;
+        RandArray randArray = (RandArray) o;
+        return rows == randArray.rows &&
+                columns == randArray.columns &&
+                Arrays.equals(arr, randArray.arr);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(rows, columns);
+        result = 31 * result + Arrays.hashCode(arr);
+        return result;
     }
 }

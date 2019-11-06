@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.Objects;
+
 public class OddArray implements IArray {
     private int[] arr = new int[50];
     private int count = 0;
@@ -42,5 +45,21 @@ public class OddArray implements IArray {
     @Override
     public void printArr() {
         for (int value : arr) System.out.print(value + " ");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof OddArray)) return false;
+        OddArray oddArray = (OddArray) o;
+        return count == oddArray.count &&
+                Arrays.equals(arr, oddArray.arr);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(count);
+        result = 31 * result + Arrays.hashCode(arr);
+        return result;
     }
 }

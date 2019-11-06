@@ -1,6 +1,4 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 
@@ -138,5 +136,21 @@ public class RandArray implements IArray {
             return arr;
         }
         return null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof RandArray)) return false;
+        RandArray randArray = (RandArray) o;
+        return size == randArray.size &&
+                Arrays.equals(arr, randArray.arr);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(size);
+        result = 31 * result + Arrays.hashCode(arr);
+        return result;
     }
 }

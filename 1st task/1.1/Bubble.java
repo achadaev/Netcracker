@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Bubble implements IArray {
     private int[] arr;
 
@@ -17,5 +19,18 @@ public class Bubble implements IArray {
         }
         long estimatedTime = System.nanoTime() - startTime;
         return estimatedTime;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Bubble)) return false;
+        Bubble bubble = (Bubble) o;
+        return Arrays.equals(arr, bubble.arr);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(arr);
     }
 }

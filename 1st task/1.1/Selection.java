@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Selection implements IArray {
     private int[] arr;
 
@@ -17,5 +19,18 @@ public class Selection implements IArray {
         }
         long estimatedTime = System.nanoTime() - startTime;
         return estimatedTime;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Selection)) return false;
+        Selection selection = (Selection) o;
+        return Arrays.equals(arr, selection.arr);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(arr);
     }
 }
