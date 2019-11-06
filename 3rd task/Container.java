@@ -38,10 +38,10 @@ public class Container {
         return "Container[(" + x1 + "," + y1 + "),(" + x2 + "," + y2 + ")]";
     }
 
+    @Override
     public boolean equals(Object object) {
         if (this == object) return true;
         if (!(object instanceof Container)) return false;
-        if (!super.equals(object)) return false;
 
         Container container = (Container) object;
 
@@ -53,8 +53,9 @@ public class Container {
         return true;
     }
 
+    @Override
     public int hashCode() {
-        int result = super.hashCode();
+        int result = 15;
         result = 31 * result + x1;
         result = 31 * result + y1;
         result = 31 * result + x2;

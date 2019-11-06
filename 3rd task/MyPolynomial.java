@@ -75,20 +75,21 @@ public class MyPolynomial {
         }
     }
 
+    @Override
     public boolean equals(Object object) {
         if (this == object) return true;
         if (!(object instanceof MyPolynomial)) return false;
-        if (!super.equals(object)) return false;
 
         MyPolynomial that = (MyPolynomial) object;
 
-        if (!java.util.Arrays.equals(coeffs, that.coeffs)) return false;
+        if (!Arrays.equals(coeffs, that.coeffs)) return false;
 
         return true;
     }
 
+    @Override
     public int hashCode() {
-        int result = super.hashCode();
+        int result = 15;
         result = 31 * result + Arrays.hashCode(coeffs);
         return result;
     }

@@ -71,10 +71,10 @@ public class Ball {
         return "Ball[(" + x + "," + y + "),speed=(" + xDelta + "," + yDelta + ")]";
     }
 
+    @Override
     public boolean equals(Object object) {
         if (this == object) return true;
         if (!(object instanceof Ball)) return false;
-        if (!super.equals(object)) return false;
 
         Ball ball = (Ball) object;
 
@@ -87,8 +87,9 @@ public class Ball {
         return true;
     }
 
+    @Override
     public int hashCode() {
-        int result = super.hashCode();
+        int result = 15;
         result = 31 * result + (x != +0.0f ? Float.floatToIntBits(x) : 0);
         result = 31 * result + (y != +0.0f ? Float.floatToIntBits(y) : 0);
         result = 31 * result + radius;

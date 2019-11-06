@@ -16,5 +16,11 @@ public class Main {
             System.out.println(b.toString());
             System.out.println();
         }
+
+        MyPolynomial mp1 = new MyPolynomial(1.0, 2.0, 3.0);
+        MyPolynomial mp2 = new MyPolynomial(1.0, 2.0, 3.0);
+        System.out.println(mp1.equals(mp2));
+        System.out.println("mp1.hashCode = " + mp1.hashCode());
+        System.out.println("mp2.hashCode = " + mp2.hashCode());
     }
 }

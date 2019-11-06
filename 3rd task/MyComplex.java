@@ -104,10 +104,10 @@ public class MyComplex {
         return newComplex;
     }
 
+    @Override
     public boolean equals(Object object) {
         if (this == object) return true;
         if (!(object instanceof MyComplex)) return false;
-        if (!super.equals(object)) return false;
 
         MyComplex myComplex = (MyComplex) object;
 
@@ -117,8 +117,9 @@ public class MyComplex {
         return true;
     }
 
+    @Override
     public int hashCode() {
-        int result = super.hashCode();
+        int result = 15;
         long temp;
         temp = Double.doubleToLongBits(real);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
