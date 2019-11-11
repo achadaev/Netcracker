@@ -35,4 +35,23 @@ public class MovableCircle implements Movable {
     public void moveRight() {
         center.x += center.xSpeed;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MovableCircle)) return false;
+
+        MovableCircle that = (MovableCircle) o;
+
+        if (radius != that.radius) return false;
+        return center.equals(that.center);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + radius;
+        result = 31 * result + center.hashCode();
+        return result;
+    }
 }

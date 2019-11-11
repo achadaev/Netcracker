@@ -38,4 +38,22 @@ public class MovableRectangle implements Movable {
         topLeft.moveRight();
         bottomRight.moveRight();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MovableRectangle)) return false;
+
+        MovableRectangle that = (MovableRectangle) o;
+
+        if (!topLeft.equals(that.topLeft)) return false;
+        return bottomRight.equals(that.bottomRight);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = topLeft.hashCode();
+        result = 31 * result + bottomRight.hashCode();
+        return result;
+    }
 }

@@ -51,4 +51,24 @@ public class MovablePoint extends Point {
         super.setXY(super.getX() + xSpeed, super.getY() + ySpeed);
         return this;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MovablePoint)) return false;
+        if (!super.equals(o)) return false;
+
+        MovablePoint that = (MovablePoint) o;
+
+        if (Float.compare(that.xSpeed, xSpeed) != 0) return false;
+        return Float.compare(that.ySpeed, ySpeed) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (xSpeed != +0.0f ? Float.floatToIntBits(xSpeed) : 0);
+        result = 31 * result + (ySpeed != +0.0f ? Float.floatToIntBits(ySpeed) : 0);
+        return result;
+    }
 }

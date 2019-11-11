@@ -37,4 +37,22 @@ public abstract class Shape {
                 ", filled=" + filled +
                 ']';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Shape)) return false;
+
+        Shape shape = (Shape) o;
+
+        if (filled != shape.filled) return false;
+        return color.equals(shape.color);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = color.hashCode();
+        result = 31 * result + (filled ? 1 : 0);
+        return result;
+    }
 }

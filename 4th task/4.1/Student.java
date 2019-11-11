@@ -44,4 +44,28 @@ public class Student extends Person {
                 ", fee=" + fee +
                 ']';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Student)) return false;
+        if (!super.equals(o)) return false;
+
+        Student student = (Student) o;
+
+        if (year != student.year) return false;
+        if (Double.compare(student.fee, fee) != 0) return false;
+        return program.equals(student.program);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        long temp;
+        result = 31 * result + program.hashCode();
+        result = 31 * result + year;
+        temp = Double.doubleToLongBits(fee);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
 }

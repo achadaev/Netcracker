@@ -52,4 +52,27 @@ public class Rectangle extends Shape {
                 ", length=" + length +
                 ']';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Rectangle)) return false;
+        if (!super.equals(o)) return false;
+
+        Rectangle rectangle = (Rectangle) o;
+
+        if (Double.compare(rectangle.width, width) != 0) return false;
+        return Double.compare(rectangle.length, length) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        long temp;
+        temp = Double.doubleToLongBits(width);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(length);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
 }

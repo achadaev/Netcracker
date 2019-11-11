@@ -31,4 +31,22 @@ public class Point3D extends Point2D {
     public String toString() {
         return "(" + super.getX() + "," + super.getY() + "," + z + ")";
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Point3D)) return false;
+        if (!super.equals(o)) return false;
+
+        Point3D point3D = (Point3D) o;
+
+        return Float.compare(point3D.z, z) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (z != +0.0f ? Float.floatToIntBits(z) : 0);
+        return result;
+    }
 }

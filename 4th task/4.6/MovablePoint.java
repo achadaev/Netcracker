@@ -40,4 +40,27 @@ public class MovablePoint implements Movable {
     public void moveRight() {
         x += xSpeed;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MovablePoint)) return false;
+
+        MovablePoint that = (MovablePoint) o;
+
+        if (x != that.x) return false;
+        if (y != that.y) return false;
+        if (xSpeed != that.xSpeed) return false;
+        return ySpeed == that.ySpeed;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + x;
+        result = 31 * result + y;
+        result = 31 * result + xSpeed;
+        result = 31 * result + ySpeed;
+        return result;
+    }
 }
