@@ -3,20 +3,35 @@ package com.example.server.dao;
 import com.example.shared.model.Person;
 import org.springframework.stereotype.Component;
 
+import javax.xml.bind.ValidationException;
 import java.io.*;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Component
 public class PersonDAOImpl implements PersonDAO {
 
-    String file = "C:\\Projects\\Netcracker\\App\\src\\main\\resources\\db.txt";
+    String file = "src\\main\\resources\\db.txt";
+
+    private boolean validateText(String str) {
+        Pattern pattern = Pattern.compile("^[a-z]{2,15}$");
+        Matcher matcher = pattern.matcher(str);
+        return matcher.matches();
+    }
 
     @Override
-    public void addPerson(Person form) throws IOException {
+    public void addPerson(Person form) throws IOException, ValidationException {
         StringBuffer str = new StringBuffer();
-        str.append(form.getName() + "*");
-        str.append(form.getSurname() + "*");
-        str.append(form.getPatronymic() + "*");
+        if (validateText(form.getName())
+                && validateText(form.getSurname())
+                && validateText(form.getPatronymic())) {
+            str.append(form.getName() + "*");
+            str.append(form.getSurname() + "*");
+            str.append(form.getPatronymic() + "*");
+        } else {
+            throw new ValidationException("Use only [a-z] symbols");
+        }
         str.append(form.getAge() + "*");
         str.append(form.getSalary() + "*");
         str.append(form.getEmail() + "*");

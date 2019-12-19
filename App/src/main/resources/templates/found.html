@@ -3,6 +3,7 @@
 <head>
     <title>Person found</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
     <p th:text="'Name: ' + ${foundPerson.name}"></p>
@@ -15,5 +16,10 @@
 
     <a href="/search">Find another one</a>
     <a href="/">Home</a>
+
+    <div id="footer">
+        <p th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm:ss')}"></p>
+        <p th:text="${#httpServletRequest.getHeader('User-Agent')}"></p>
+    </div>
 </body>
 </html>

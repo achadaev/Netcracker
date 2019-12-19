@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.bind.ValidationException;
 import java.io.IOException;
 
 @Controller
@@ -31,8 +32,9 @@ public class RegistrationController {
         try {
             personDAO.addPerson(person);
             model.addAttribute("person", person);
-        } catch (IOException e) {
+        } catch (IOException | ValidationException e) {
             e.printStackTrace();
+            return "error";
         }
         return "result";
     }
