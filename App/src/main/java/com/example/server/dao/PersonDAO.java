@@ -7,5 +7,6 @@ import java.io.IOException;
 
 public interface PersonDAO {
     void addPerson(Person form) throws IOException, ValidationException;
+    void addPersonFromFile(String filename) throws IOException, ValidationException;
     Person findPerson(Person person) throws IOException;
 }
