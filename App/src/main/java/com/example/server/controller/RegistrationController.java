@@ -9,17 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.xml.bind.ValidationException;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class RegistrationController {
@@ -81,14 +75,14 @@ public class RegistrationController {
     public String uploadSubmit(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
         if (file.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", "Select a file");
-            return "redirect:upload-result";
+            return "redirect:/upload-result";
         }
 
         try {
             byte[] bytes = file.getBytes();
             Path path = Paths.get(UPLOADED_FOLDER + file.getOriginalFilename());
             Files.write(path, bytes);
-            personDAO.addPersonFromFile(path.toString());
+            personDAO.addPerson(path.toString());
 
             redirectAttributes.addFlashAttribute("message", "File '" + file.getOriginalFilename() + "' was uploaded");
         } catch (IOException | ValidationException e) {

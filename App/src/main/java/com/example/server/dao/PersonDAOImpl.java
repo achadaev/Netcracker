@@ -56,7 +56,7 @@ public class PersonDAOImpl implements PersonDAO {
     }
 
     @Override
-    public void addPersonFromFile(String filename) throws IOException, ValidationException {
+    public void addPerson(String filename) throws IOException, ValidationException {
         Scanner input = new Scanner(new File(filename));
         input.useDelimiter("[*%]");
         if (input.hasNext()) {
