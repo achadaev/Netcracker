@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
     <title>Upload File</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
+<div id="content">
 <h1>Upload File</h1>
 <form method="post" action="/upload" enctype="multipart/form-data">
     <input type="file" name="file"/>
     <input type="submit" value="Submit">
 </form>
+    <br>
 <a href="/">Home</a>
+</div>
 </body>
 </html>

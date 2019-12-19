@@ -1,6 +1,7 @@
 package com.example.server.controller;
 
 import com.example.server.dao.PersonDAO;
+//import com.example.server.service.MailService;
 import com.example.shared.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,11 @@ public class RegistrationController {
 
     @Autowired
     private PersonDAO personDAO;
+
+/*
+    @Autowired
+    MailService mailService;
+*/
 
     private static String UPLOADED_FOLDER = "src\\main\\resources\\uploaded\\";
 
@@ -49,6 +55,7 @@ public class RegistrationController {
     @GetMapping("/search")
     public String searchForm(Model model) {
         model.addAttribute("search", new Person());
+//        mailService.prepareAndSend("andrew.chadaev@gmail.com", "Hello");
         return "search";
     }
 

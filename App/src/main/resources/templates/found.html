@@ -6,6 +6,7 @@
     <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
+<div id="content">
     <p th:text="'Name: ' + ${foundPerson.name}"></p>
     <p th:text="'Surname: ' + ${foundPerson.surname}"></p>
     <p th:text="'Patronymic: ' + ${foundPerson.patronymic}"></p>
@@ -21,5 +22,6 @@
         <p th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm:ss')}"></p>
         <p th:text="${#httpServletRequest.getHeader('User-Agent')}"></p>
     </div>
+</div>
 </body>
 </html>

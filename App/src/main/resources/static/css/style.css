@@ -3,3 +3,18 @@
     bottom: 0;
     left: 0;
 }
+
+a {
+    padding: 10px;
+}
+
+body {
+    height: 50em;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+#content {
+    margin: 0 auto;
+}

@@ -3,13 +3,16 @@
 <head>
     <title>Search</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
+<div id="content">
 <form action="#" th:action="@{/search}" th:object="${search}" method="post">
     <p>Name: <input type="text" th:field="*{name}"/></p>
     <p>Surname: <input type="text" th:field="*{surname}"/></p>
     <p><input type="submit" value="Search"/></p>
 </form>
 <a href="/">Home</a>
+</div>
 </body>
 </html>

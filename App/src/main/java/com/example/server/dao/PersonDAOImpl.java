@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 import javax.xml.bind.ValidationException;
 import java.io.*;
-import java.sql.PreparedStatement;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -43,18 +42,6 @@ public class PersonDAOImpl implements PersonDAO {
         writer.close();
     }
 
-    private Person readNext(Scanner scanner) {
-        String name = scanner.next();
-        String surname = scanner.next();
-        String patronymic = scanner.next();
-        int age = scanner.nextInt();
-        int salary = scanner.nextInt();
-        String email = scanner.next();
-        String job = scanner.next();
-
-        return new Person(name, surname, patronymic, age, salary, email, job);
-    }
-
     @Override
     public void addPerson(String filename) throws IOException, ValidationException {
         Scanner input = new Scanner(new File(filename));
@@ -79,4 +66,17 @@ public class PersonDAOImpl implements PersonDAO {
         input.close();
         return null;
     }
+
+    private Person readNext(Scanner scanner) {
+        String name = scanner.next();
+        String surname = scanner.next();
+        String patronymic = scanner.next();
+        int age = scanner.nextInt();
+        int salary = scanner.nextInt();
+        String email = scanner.next();
+        String job = scanner.next();
+
+        return new Person(name, surname, patronymic, age, salary, email, job);
+    }
+
 }

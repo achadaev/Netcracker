@@ -3,10 +3,13 @@
 <head>
     <title>Upload Result</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
+<div id="content">
 <h1>Upload Result</h1>
 <div th:text="${message} ? ${message} : 'Error'"/>
 <a href="/">Home</a>
+</div>
 </body>
 </html>

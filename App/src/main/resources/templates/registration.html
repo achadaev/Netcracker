@@ -3,8 +3,10 @@
 <head>
     <title>Registration</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
+<div id="content">
 <h1>Registration</h1>
 <form action="#" th:action="@{/registration}" th:object="${registration}" method="post">
     <p>Name: <input type="text" th:field="*{name}"/></p>
@@ -17,5 +19,6 @@
     <p><input type="submit" value="Register"/></p>
 </form>
 <a href="/">Home</a>
+</div>
 </body>
 </html>

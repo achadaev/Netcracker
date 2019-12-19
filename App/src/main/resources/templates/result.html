@@ -3,18 +3,21 @@
 <head>
     <title>Result</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
+<div id="content">
 <h1>Registered user:</h1>
     <p th:text="'Name: ' + ${person.name}"></p>
     <p th:text="'Surname: ' + ${person.surname}"></p>
     <p th:text="'Patronymic: ' + ${person.patronymic}"></p>
     <p th:text="'Age: ' + ${person.age}"></p>
     <p th:text="'Salary: ' + ${person.salary}"></p>
-    <p th:text="'Enail: ' + ${person.email}"></p>
+    <p th:text="'Email: ' + ${person.email}"></p>
     <p th:text="'Place of work: ' + ${person.job}"></p>
 
     <a href="/registration">Register another one</a>
     <a href="/">Home</a>
+</div>
 </body>
 </html>
