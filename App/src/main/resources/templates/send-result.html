@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Hello</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+    <title>Send Result</title>
 </head>
 <body>
 <div id="content">
-    <h1>Select action</h1>
-    <a href="/registration">Register person</a>
-    <a href="/upload">Upload from file</a>
-    <a href="/search">Find person</a>
-    <a href="/send">Send an email</a>
+    <h1>Send Result</h1>
+    <div th:text="${result}"/>
+    <a href="/">Home</a>
 </div>
 </body>
 </html>

@@ -1,15 +1,18 @@
 package com.example.server.controller;
 
 import com.example.server.dao.PersonDAO;
-//import com.example.server.service.MailService;
+import com.example.server.service.EmailService;
+import com.example.shared.model.Mail;
 import com.example.shared.model.Person;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSendException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.mail.SendFailedException;
 import javax.xml.bind.ValidationException;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -22,10 +25,8 @@ public class RegistrationController {
     @Autowired
     private PersonDAO personDAO;
 
-/*
     @Autowired
-    MailService mailService;
-*/
+    EmailService emailService;
 
     private static String UPLOADED_FOLDER = "src\\main\\resources\\uploaded\\";
 
@@ -55,7 +56,6 @@ public class RegistrationController {
     @GetMapping("/search")
     public String searchForm(Model model) {
         model.addAttribute("search", new Person());
-//        mailService.prepareAndSend("andrew.chadaev@gmail.com", "Hello");
         return "search";
     }
 
@@ -102,6 +102,23 @@ public class RegistrationController {
     @GetMapping("/upload-result")
     public String uploadResult() {
         return "upload-result";
+    }
+
+    @GetMapping("/send")
+    public String getMailForm(Model model) {
+        model.addAttribute("send", new Mail());
+        return "send";
+    }
+
+    @PostMapping("/send")
+    public String sendMail(@ModelAttribute Mail mail, Model model) {
+        try {
+            emailService.send(mail.getTo(), mail.getSubject(), mail.getText());
+            model.addAttribute("result", "Message was sent!");
+        } catch (MailSendException e) {
+            model.addAttribute("result", "Error sending message");
+        }
+        return "send-result";
     }
 
 }
