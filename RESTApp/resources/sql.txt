@@ -1,0 +1,60 @@
+create table customer (
+	id serial primary key,
+	surname varchar (25) not null,
+	living_area varchar (35),
+	discount real
+);
+
+create table shop (
+	id serial primary key,
+	name varchar (35) unique not null,
+	location_area varchar (35) not null,
+	commission real
+);
+
+create table book (
+	id serial primary key,
+	name varchar (35) unique not null,
+	price real not null,
+	storage varchar (30),
+	quantity integer
+);
+
+create table purchase (
+	order_number serial,
+	date timestamp not null,
+	seller integer not null,
+	customer integer not null,
+	book integer not null,
+	quantity integer not null,
+	amount real not null,
+	constraint purchase_seller_fkey foreign key (seller)
+		references shop (id) match simple
+		on update cascade on delete restrict,
+	constraint purchase_customer_fkey foreign key (customer)
+		references customer (id) match simple
+		on update cascade on delete restrict,
+	constraint purchase_book_fkey foreign key (book)
+		references book (id) match simple
+		on update cascade on delete restrict
+);
+
+insert into customer (surname, living_area, discount) 
+values ('Smith', 'Arizona', 1.5),
+	('Davis', 'California', 2.5),
+	('Scott', 'Illinois', 5.75);
+	
+insert into shop (name, location_area, commission)
+values ('Best Books', 'Washington', 5),
+	('Books Heaven', 'California', 3.2),
+	('BookWorm', 'Alaska', 2.5);
+	
+insert into book (name, price, storage, quantity)
+values ('Invisible Man', 350.0, 'Chicago', 20),
+	('War & World', 500.0, 'Arizona', 15),
+	('Green Mile', 450.5, 'California', 10);
+	
+insert into purchase (date, seller, customer, book, quantity, amount)
+values ('2018-02-01 16:58:45', 1, 3, 3, 1, 450.5),
+	('2018-02-02 12:05:08', 2, 2, 2, 2, 1000.0),
+	('2019-02-02 13:30:41', 3, 1, 1, 3, 1050.0);
