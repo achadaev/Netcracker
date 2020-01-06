@@ -49,4 +49,9 @@ public class ShopController {
         return shopService.getAll();
     }
 
+    @GetMapping("/discounted")
+    List<Shop> getDiscountedShops() {
+        return shopService.getDiscountedShops();
+    }
+
 }

@@ -66,4 +66,19 @@ public class PurchaseController {
         return purchaseService.getExtendedPurchaseInfo();
     }
 
+    @GetMapping("/expensive")
+    List<Object[]> getExpensivePurchases() {
+        return purchaseService.getExpensivePurchases();
+    }
+
+    @GetMapping("/local")
+    List<Object[]> getLocalPurchases() {
+        return purchaseService.getLocalPurchases();
+    }
+
+    @GetMapping("/storage-local")
+    List<Object[]> getStorageLocalPurchases() {
+        return purchaseService.getStorageLocalPurchases();
+    }
+
 }

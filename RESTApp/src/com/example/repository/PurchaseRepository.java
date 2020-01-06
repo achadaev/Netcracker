@@ -34,5 +34,25 @@ public interface PurchaseRepository extends JpaRepository<Purchase, Integer> {
             "JOIN book ON purchase.book = book.id", nativeQuery = true)
     List<Object[]> getExtendedPurchaseInfo();
 
+    @Query(value = "SELECT order_number, customer.surname, date " +
+            "FROM purchase JOIN customer ON purchase.customer = customer.id " +
+            "WHERE amount >= 60000.0", nativeQuery = true)
+    List<Object[]> getExpensivePurchases();
+
+    @Query(value = "SELECT customer.surname, shop.location_area, date " +
+            "FROM purchase JOIN customer ON purchase.customer = customer.id " +
+            "JOIN shop ON purchase.seller = shop.id " +
+            "WHERE customer.living_area = shop.location_area " +
+            "AND EXTRACT(MONTH FROM date) > 3 " +
+            "ORDER BY date", nativeQuery = true)
+    List<Object[]> getLocalPurchases();
+
+    @Query(value = "SELECT book.name, book.storage, purchase.quantity, purchase.amount " +
+            "FROM book JOIN purchase ON book.id = purchase.book " +
+            "JOIN shop ON purchase.seller = shop.id " +
+            "WHERE book.storage = shop.location_area " +
+            "AND book.quantity > 10 " +
+            "ORDER BY purchase.amount", nativeQuery = true)
+    List<Object[]> getStorageLocalPurchases();
 
 }

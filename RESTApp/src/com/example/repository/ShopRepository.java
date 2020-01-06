@@ -20,5 +20,11 @@ public interface ShopRepository extends JpaRepository<Shop, Integer> {
             "WHERE id = ?3", nativeQuery = true)
     void update(String surname, double commission, int id);
 
+    @Query(value = "SELECT shop.id, shop.name, shop.location_area, shop.commission " +
+            "FROM shop JOIN purchase ON shop.id = purchase.seller " +
+            "JOIN customer ON purchase.customer = customer.id " +
+            "WHERE shop.location_area != 'Avtozavodsky' " +
+            "AND customer.discount BETWEEN 10 AND 15", nativeQuery = true)
+    List<Shop> getDiscountedShops();
 
 }

@@ -40,4 +40,8 @@ public class ShopService {
         return getAll();
     }
 
+    public List<Shop> getDiscountedShops() {
+        return shopRepository.getDiscountedShops();
+    }
+
 }

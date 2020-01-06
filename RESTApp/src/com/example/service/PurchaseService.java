@@ -68,4 +68,16 @@ public class PurchaseService {
         return purchaseRepository.getExtendedPurchaseInfo();
     }
 
+    public List<Object[]> getExpensivePurchases() {
+        return purchaseRepository.getExpensivePurchases();
+    }
+
+    public List<Object[]> getLocalPurchases() {
+        return purchaseRepository.getLocalPurchases();
+    }
+
+    public List<Object[]> getStorageLocalPurchases() {
+        return purchaseRepository.getStorageLocalPurchases();
+    }
+
 }
